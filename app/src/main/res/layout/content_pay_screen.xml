@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ie.dynamickickboxing.kickboxing.PayScreen"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/activity_pay_screen">
+
+    <RadioGroup
+        android:id="@+id/paymentMethod"
+        android:layout_width="0dp"
+        android:layout_height="89dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="104dp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_Teens"
+        app:layout_constraintStart_toStartOf="@+id/tv_Kids"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/PayPal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/paypal" />
+
+        <RadioButton
+            android:id="@+id/Direct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/direct" />
+    </RadioGroup>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="123dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="122dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_pay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentMethod" />
+
+    <NumberPicker
+        android:id="@+id/amountPicker"
+        android:layout_width="0dp"
+        android:layout_height="194dp"
+        android:layout_marginBottom="61dp"
+        android:layout_marginTop="65dp"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="@+id/tv_Adults"
+        app:layout_constraintStart_toStartOf="@+id/totalSoFar"
+        app:layout_constraintTop_toTopOf="@+id/tv_Adults" />
+
+    <Button
+        android:id="@+id/btn_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:layout_marginStart="42dp"
+        android:onClick="payButtonPressed"
+        android:text="@string/payButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_Kids"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/tv_Kids"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_Teens"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/tv_Teens"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_Adults"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/tv_Adults"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_Teens"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_Teens" />
+
+    <TextView
+        android:id="@+id/tv_Amount"
+        android:layout_width="71dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginTop="11dp"
+        android:text="@string/amount"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toStartOf="@+id/paymentAmount"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    <EditText
+        android:id="@+id/paymentAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="23dp"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_Amount"
+        app:layout_constraintEnd_toEndOf="@+id/amountPicker"
+        app:layout_constraintStart_toEndOf="@+id/btn_pay"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Amount" />
+
+    <TextView
+        android:id="@+id/totalSoFar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="52dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentAmount" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/Amount"
+        app:layout_constraintEnd_toStartOf="@+id/totalSoFar"
+        app:layout_constraintTop_toTopOf="@+id/totalSoFar" />
+
+</android.support.constraint.ConstraintLayout>

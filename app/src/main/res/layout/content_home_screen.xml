@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="ie.dynamickickboxing.kickboxing.HomeScreen"
+    tools:layout_editor_absoluteY="81dp"
+    tools:showIn="@layout/activity_home_screen">
+
+    <ImageButton
+        android:id="@+id/button_pay"
+        style="@android:style/Widget.ImageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginStart="52dp"
+        android:contentDescription="@string/btn_pay_des"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPay"
+        app:srcCompat="@drawable/pay" />
+
+    <ImageButton
+        android:id="@+id/button_schedule"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="45dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginStart="52dp"
+        android:contentDescription="@string/btn_schedule_des"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/tvPay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewSchedule"
+        app:srcCompat="@drawable/schedule" />
+
+    <TextView
+        android:id="@+id/viewSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="17dp"
+        android:text="@string/viewSchedule"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_schedule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/viewSchedule" />
+
+    <TextView
+        android:id="@+id/tvPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="@string/tvPay"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button_pay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_schedule"
+        tools:text="@string/tvPay" />
+
+</android.support.constraint.ConstraintLayout>
