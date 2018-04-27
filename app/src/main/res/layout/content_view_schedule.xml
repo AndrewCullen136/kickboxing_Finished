@@ -87,19 +87,12 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="35dp"
+            android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:text="@string/fri"
             app:layout_column="5"
             app:layout_row="0" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sat_sun"
-            app:layout_column="6"
-            app:layout_row="0" />
     </android.support.v7.widget.GridLayout>
 
 </android.support.constraint.ConstraintLayout>

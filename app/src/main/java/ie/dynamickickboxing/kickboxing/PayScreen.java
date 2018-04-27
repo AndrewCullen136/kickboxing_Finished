@@ -16,14 +16,21 @@ import android.widget.NumberPicker;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import org.json.JSONException;
+
+import ie.dynamickickboxing.main.KickboxingApp;
 import models.Paid;
 
 public class PayScreen extends Base {
 
+
+
     private Button payButton;
     private RadioGroup paymentMethod;
+
+    private KickboxingApp app;
+
     private ProgressBar progressBar;
     private NumberPicker amountPicker;
     private EditText amountText;
@@ -63,8 +70,13 @@ public class PayScreen extends Base {
         amountTotal.setText("$0");
     }
 
-    public void payButtonPressed (View view)
-    {
+
+
+
+
+
+
+    public void payButtonPressed (View view) throws JSONException {
         String method = paymentMethod.getCheckedRadioButtonId() == R.id.PayPal ? "PayPal" : "Direct";
 
         int paidAmount =  amountPicker.getValue();
@@ -77,7 +89,7 @@ public class PayScreen extends Base {
 
         if (paidAmount > 0)
         {
-            newPaid(new Paid(paidAmount, method));
+            app.newPayments(new Paid(paidAmount, method));
             progressBar.setProgress(paidAmount);
             String totalDonatedStr = "$" + paidAmount;
             amountTotal.setText(totalDonatedStr);
@@ -86,28 +98,14 @@ public class PayScreen extends Base {
         Log.v("Pay", amountPicker.getValue() + " Paid by " +  method + "\nCurrent total " + totalPaid);
     }
 
-    private void newPaid(Paid paid) {
-    }
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home_screen, menu);
-        return true;
+    public void reset(MenuItem item)
+    {
+        app.dbManager.reset();
+        app.totalPaid = 0;
+        amountTotal.setText("$" + app.totalPaid);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-
-        switch (item.getItemId())
-        {
-            case R.id.menuReport : startActivity (new Intent(this, Report.class));
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-
-    }
 
 
 }

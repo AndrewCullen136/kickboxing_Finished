@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "550543661285",
+    "firebase_url": "https://kickboxing-1521222134883.firebaseio.com",
+    "project_id": "kickboxing-1521222134883",
+    "storage_bucket": "kickboxing-1521222134883.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550543661285:android:754b459a52fee5cc",
+        "android_client_info": {
+          "package_name": "ie.dynamickickboxing.kickboxing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550543661285-t4autd3srb6r47tonijpab4k8jnmn7vc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.dynamickickboxing.kickboxing",
+            "certificate_hash": "1700554e9840160c79deec235740b2f7b248e8fe"
+          }
+        },
+        {
+          "client_id": "550543661285-8ndsnep9n2k6n6c3a1dsgh6oeh8c4a34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6tZvi4h2njogXJqpQyD5JsOGLDRAAoUA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550543661285-8ndsnep9n2k6n6c3a1dsgh6oeh8c4a34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,39 +1,41 @@
 package ie.dynamickickboxing.kickboxing;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.SQLException;
 
+import ie.dynamickickboxing.main.KickboxingApp;
 import models.Paid;
+
 
 /**
  * Created by andrewcullen on 16/03/2018.
  */
 
-public class Base extends AppCompatActivity
-{
-    public final  int            target       = 15;
-    public        int            totalPaid = 0;
-    public static List<Paid> payments    = new ArrayList<Paid>();
+public class Base extends AppCompatActivity {
 
-    public boolean newPayment(Paid payment)
-    {
-        boolean targetAchieved = totalPaid > target;
-        if (!targetAchieved)
-        {
-            payments.add(payment);
-            totalPaid += payment.amount;
+    public KickboxingApp app;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        app = (KickboxingApp) getApplication();
+
+        try {
+            app.dbManager.open();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        else {
-            Toast.makeText(this, "Target Exceeded!", Toast.LENGTH_SHORT).show();
-        }
-        return targetAchieved;
+        app.dbManager.setTotalDonated(this);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -45,32 +47,46 @@ public class Base extends AppCompatActivity
     @Override
     public boolean onPrepareOptionsMenu (Menu menu){
         super.onPrepareOptionsMenu(menu);
+
+        MenuItem reset = menu.findItem(R.id.menuReset);
         MenuItem report = menu.findItem(R.id.menuReport);
-        MenuItem payment = menu.findItem(R.id.menuPaid);
+        MenuItem pay = menu.findItem(R.id.menuPaid);
 
-        if(payments.isEmpty())
-            report.setEnabled(false);
-        else
-            report.setEnabled(true);
 
-        if(this instanceof Base)
+        if(app.dbManager.getAll().isEmpty())
         {
-            payment.setVisible(false);
-            if(!payments.isEmpty()) {
+            report.setEnabled(false);
+            reset.setEnabled(false);
+        }
+        else {
+            report.setEnabled(true);
+            reset.setEnabled(true);
+        }
+        if(this instanceof PayScreen){
+            pay.setVisible(false);
+            if(!app.dbManager.getAll().isEmpty())
+            {
                 report.setVisible(true);
+                reset.setEnabled(true);
             }
         }
         else {
             report.setVisible(false);
-            payment.setVisible(true);
+            pay.setVisible(true);
+            reset.setVisible(false);
         }
-
         return true;
     }
 
-    public void settings(MenuItem item)
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        app.dbManager.close();
+    }
+
+    public void homescreen(MenuItem item)
     {
-        Toast.makeText(this, "Settings Selected", Toast.LENGTH_SHORT).show();
+        startActivity (new Intent(this, HomeScreen.class));
     }
 
     public void report(MenuItem item)
@@ -78,8 +94,12 @@ public class Base extends AppCompatActivity
         startActivity (new Intent(this, Report.class));
     }
 
-    public void donate(MenuItem item)
-    {
-        startActivity (new Intent(this, PayScreen.class));
-    }
+    public void pay(MenuItem item) { startActivity (new Intent(this, PayScreen.class));}
+
+    public void reset(MenuItem item) {}
 }
+
+
+
+
+
