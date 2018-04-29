@@ -1,4 +1,14 @@
 # kickboxing_Finished
+
+changes from the interview google sign in implamented 
+report screen can now be accesses and changes ie ereased 
+
+
+
+
+
+
+
 Dynamic Kickboxing
 This version of the app allows the user to sign in, pay for a class the user is also able to view a list of payments made and log out or view the time schedule
 Installing
